@@ -1,6 +1,6 @@
 {
   "name": "react-native-activestorage-floranow",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "source": "src/index.ts",
   "main": "dist/react-native-activestorage-floranow.js",
   "module": "dist/react-native-activestorage-floranow.module.js",

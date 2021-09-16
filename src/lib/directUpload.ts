@@ -9,9 +9,10 @@ interface DirectUploadParams {
   file: File;
   headers?: object;
   onStatusChange: (data: DirectUploadResult) => void;
+  interval?: number;
 }
 
-const directUpload = ({ directUploadsUrl, file, headers, onStatusChange }: DirectUploadParams) => {
+const directUpload = ({ directUploadsUrl, file, headers, onStatusChange, interval }: DirectUploadParams) => {
   const taskId = ++id;
   let canceled = false;
   let task: StatefulPromise<FetchBlobResponse>;
@@ -46,7 +47,7 @@ const directUpload = ({ directUploadsUrl, file, headers, onStatusChange }: Direc
       task = RNFetchBlob.fetch('PUT', url, uploadHeaders, fileData);
 
       task
-        .uploadProgress({ interval: 2000 }, (uploadedBytes, totalBytes) => {
+        .uploadProgress({ interval: interval }, (uploadedBytes, totalBytes) => {
           const progress = (uploadedBytes / totalBytes) * 100;
           handleStatusUpdate({ status: 'uploading', progress, totalBytes, uploadedBytes });
         })

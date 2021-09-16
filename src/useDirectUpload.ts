@@ -10,21 +10,29 @@ interface OnSuccessParams {
 
 export type Params = {
   onSuccess?: (params: OnSuccessParams) => void;
-}
+};
 
 const useDirectUpload = ({ onSuccess }: Params = {}) => {
-  const { directUploadsUrl } = useConfig();
+  const { directUploadsUrl, interval } = useConfig();
   const [uploads, setUploads] = useState<DirectUploadResult[]>([]);
 
-  const handleFileUploadChange = useCallback((fileUpload: DirectUploadResult) => {
-    setUploads((fileUploads) => insertOrReplace(fileUploads, fileUpload));
-  }, []);
+  const handleFileUploadChange = useCallback(
+    (fileUpload: DirectUploadResult) => {
+      setUploads((fileUploads) => insertOrReplace(fileUploads, fileUpload));
+    },
+    []
+  );
 
   const upload = useCallback(
     async (files: File[]) => {
       const signedIds = await Promise.all(
         files.map((file) =>
-          directUpload({ file, directUploadsUrl, onStatusChange: handleFileUploadChange })
+          directUpload({
+            file,
+            directUploadsUrl,
+            onStatusChange: handleFileUploadChange,
+            interval,
+          })
         )
       );
 
@@ -33,12 +41,15 @@ const useDirectUpload = ({ onSuccess }: Params = {}) => {
         onSuccess && onSuccess({ signedIds: validIds });
       }
 
-      return { signedIds: validIds }
+      return { signedIds: validIds };
     },
     [handleFileUploadChange, onSuccess]
   );
 
-  const uploading = useMemo(() => uploads.some((upload) => upload.status === 'uploading'), [uploads]);
+  const uploading = useMemo(
+    () => uploads.some((upload) => upload.status === 'uploading'),
+    [uploads]
+  );
 
   return {
     upload,
