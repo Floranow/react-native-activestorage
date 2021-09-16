@@ -24,7 +24,7 @@ const App = () => (
 )
 ```
 
-You can provide `mountPath` to provider if you have different than `/rails/active_storage`
+You can provide `mountPath` to provider if you have different than `/rails/active_storage` and you can provide `interval` to provider if you want to change streaming interval rather than 2000 ms (millisecond)
 
 ### Use with React Hooks
 
