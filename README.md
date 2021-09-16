@@ -7,7 +7,7 @@ Use direct upload for uploading files to Rails ActiveStorage.
 Install this package and [rn-fetch-blob](rn-fetch-blob)
 
 ```sh
-yarn add react-native-activestorage rn-fetch-blob
+yarn add react-native-activestorage-floranow rn-fetch-blob
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ yarn add react-native-activestorage rn-fetch-blob
 ### Add Active Storage provider
 
 ```jsx
-import { ActiveStorageProvider } from 'react-native-activestorage'
+import { ActiveStorageProvider } from 'react-native-activestorage-floranow'
 
 const App = () => (
   <ActiveStorageProvider host="https://localhost:4000">
@@ -29,7 +29,7 @@ You can provide `mountPath` to provider if you have different than `/rails/activ
 ### Use with React Hooks
 
 ```jsx
-import { useDirectUpload } from 'react-native-activestorage'
+import { useDirectUpload } from 'react-native-activestorage-floranow'
 
 const Upload = () => {
   const onSuccess = ({ signedIds }) => {
@@ -61,7 +61,7 @@ const Upload = () => {
 ### Use with React Component
 
 ```jsx
-import { DirectUpload } from 'react-native-activestorage'
+import { DirectUpload } from 'react-native-activestorage-floranow'
 
 const Upload = () => (
   <DirectUpload onSuccess={({ signedIds }) => console.warn({ signedIds })}>
@@ -80,7 +80,7 @@ const Upload = () => (
 ### Use `directUpload` without React
 
 ```js
-import { directUpload } from 'react-native-activestorage'
+import { directUpload } from 'react-native-activestorage-floranow'
 
 const file = {
   name: 'image.jpg',
@@ -100,9 +100,12 @@ const onStatusChange = ({ status, progress, cancel }) => {
 directUpload({ file, directUploadsUrl, onStatusChange });
 ```
 
+## Fixes
+Fix stream closed error occurred in Android.
+
 ## License
 
 The package is available as open source under the terms of the [MIT License][license].
 
-[license]: https://raw.githubusercontent.com/jpalumickas/react-native-activestorage/master/LICENSE
+[license]: https://raw.githubusercontent.com/Floranow/react-native-activestorage/master/LICENSE
 [rn-fetch-blob]: https://github.com/joltup/rn-fetch-blob

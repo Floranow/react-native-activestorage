@@ -1,20 +1,20 @@
 {
-  "name": "react-native-activestorage",
+  "name": "react-native-activestorage-floranow",
   "version": "1.0.0",
   "source": "src/index.ts",
-  "main": "dist/react-native-activestorage.js",
-  "module": "dist/react-native-activestorage.module.js",
+  "main": "dist/react-native-activestorage-floranow.js",
+  "module": "dist/react-native-activestorage-floranow.module.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "description": "React Native support for Rails ActiveStorage",
-  "homepage": "https://github.com/jpalumickas/react-native-activestorage",
+  "homepage": "https://github.com/Floranow/react-native-activestorage",
   "bugs": {
-    "url": "https://github.com/jpalumickas/react-native-activestorage/issues"
+    "url": "https://github.com/Floranow/react-native-activestorage/issues"
   },
-  "repository": "jpalumickas/react-native-activestorage",
+  "repository": "Floranow/react-native-activestorage",
   "license": "MIT",
   "dependencies": {
     "abab": "^2.0.5"
